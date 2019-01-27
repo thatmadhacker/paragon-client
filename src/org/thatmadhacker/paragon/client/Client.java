@@ -18,7 +18,6 @@ import com.thatmadhacker.utils.misc.BASE64;
 
 public class Client {
 
-	public static final String HOST = "localhost";
 	public static final int PORT = 6872;
 
 	public static void main(String[] args) throws Exception {
@@ -30,7 +29,11 @@ public class Client {
 	@SuppressWarnings("resource")
 	public Client() throws Exception {
 
-		Socket s = new Socket(HOST, PORT);
+		Scanner sin = new Scanner(System.in);
+		
+		System.out.print("IP: ");
+		
+		Socket s = new Socket(sin.nextLine(), PORT);
 
 		Scanner in = new Scanner(s.getInputStream());
 		PrintWriter out = new PrintWriter(s.getOutputStream(), true);
@@ -44,8 +47,6 @@ public class Client {
 				.replaceAll("\n", "&l"));
 
 		in.nextLine();
-
-		Scanner sin = new Scanner(System.in);
 
 		System.out.print("Register or login? R/L: ");
 		
